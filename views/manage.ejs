@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management</title>
+</head>
+<body>
+    <% if(admin) { %>
+        <h1>Welcome to the Management Page</h1>
+        <h2>Here you can manage the products</h2>
+        <form action="/add" method="POST">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+            
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" required>
+            
+            <label for="picture">Picture:</label>
+            <input type="text" id="picture" name="picture" required>
+            
+            <input type="submit" value="Add">
+            <br>
+            <p>Secret key: bananananananana</p>
+            <br>
+            <p>Initialization vector: encryptionIntVec</p>
+        </form>
+    <% } else { %>
+        <h1>Sorry, you are not authorized to access this page</h1>
+    <% } %>
+    <h1>GREAT SUCCESS</h1>
+</body>
+</html>

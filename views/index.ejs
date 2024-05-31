@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Birthday Shop</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/login">Login</a></li>
+              <% if(flag2){ %>
+                <li><a href="/manage">Manage</a></li>
+                <% } %>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+        <style>
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            padding: 5px;
+        }
+
+        nav ul li a:hover {
+            background-color: #333;
+            color: #fff;
+        }
+
+        </style>
+    </header>
+    
+
+    <div id="welcome_msg">
+        <h1>Welcome to the Birthday Shop</h1>
+        <h2>Here you shall find everything for the perfect birthday party!</h2>
+        <h3>Unfortunately, due to limited capacities, service will be given ONLY to exclusive VIP customers</h3>
+        <h3>Please feel free to contact Laura, VIP customers and HR specialist <a href="#">HERE</a></h3>
+    </div>
+    <% if(authenticated) { %>
+        <div> Credits: <%= credits %></div>
+    <% } %>
+    <div class="container <%= authenticated ? 'allowed' : 'not-allowed' %>">
+        <% for(var i=0; i<titles.length; i++) { %>
+            <form class="product" action="/buy" method="post">
+                <img src="images/<%= pictures[i] %>" alt="Product <%= i+1 %>">
+                <h4><%= titles[i] %></h4>
+                <p>Price: <%= prices[i] %></p>
+                <input type="hidden" name="price" value="<%= prices[i] %>">
+                <input type="hidden" name="cake_number" value="<%= i %>">
+                <% if(authenticated) { %>
+                <button class="buy-button" type="submit">Buy</button>
+                <% } %>
+            </form>
+        <% } %>
+    </div>
+    <% if(authenticated) { %>
+        <h2>4ZxXXvmH2Ni1ZZYJVIZLUW3XHlE87IuDnn1bgkLf2mDznMgXqugb0patBFFHUHOxSiaNz7NPPZYvdboqa4HXGwCpP/tEi1epOsViZKEevaNgCa0U1GNfjqHQFJGLcqYoBn3meEVDV89+VRlJ9fFcu7QqOu7GftnPp1pF7ZdGa5dIvojv7yrMn2AYVWHLWW8vzAotCfe0r0A6NyKAGLVIEs84fPpJeB6NhCEVff+R/Y+O4JEFf37EdCA9ZP79Omf13N6FGrwBEa9JbAGT7cWYhMIjkcAsXcJSqpCatUb8/5eqtqa8vDpCNzX2sY2hW3ujIgxYdvpem2YASRoM/5KqQcT70QhM+OJ1p3uSwFq5VrWpsCK5V/P0ESsc7ZjHRavl3X/0xfPtw4hOyMDaS0z9xBsLZuQBlW8+447baDByULJuPUpU+uEyzEbVqaiIN4td+qkWk01jgmL2Q6pqyZ4ii6l/AoX1wyrkBfAI+msGMr/a4xNO/v/GrYqJ6CtA5nijRMFTZP1bhIJRK4Gc25Bs</h2>
+    <% } %>
+
+    <h2><%= flag2 %></h2>
+</body>
+</html>
